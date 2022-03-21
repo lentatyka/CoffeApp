@@ -41,12 +41,16 @@ class LocationService @Inject constructor(
     }
     fun startUpdate() {
         checkPermission()
-        locationManager.lastLocation.addOnSuccessListener {
-            callback.invoke(it)
-        }.addOnFailureListener {
+        fun requestLocation(){
             locationManager.requestLocationUpdates(
                 locationRequest, this, Looper.getMainLooper()
             )
+            stopUpdate()
+        }
+        locationManager.lastLocation.addOnSuccessListener {
+            it?.let {callback.invoke(it)} ?: requestLocation()
+        }.addOnFailureListener {
+            requestLocation()
         }
     }
 

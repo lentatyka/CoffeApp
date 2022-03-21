@@ -115,6 +115,9 @@ class LocationFragment : Fragment(), LocationService.Callback {
     override fun invoke(location: Location?) {
         location?.let {
             viewModel.updateLocation(location)
-        } ?: getString(R.string.gps_no_connect).showToast(requireContext())
+        } ?: kotlin.run{
+            //binding.locationSwipeLayout.isRefreshing = false
+            getString(R.string.gps_no_connect).showToast(requireContext())
+        }
     }
 }
