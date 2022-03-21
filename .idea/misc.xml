@@ -8,15 +8,19 @@
         <entry key="..\:/Android/Coffe/app/src/main/res/drawable/ic_add.xml" value="0.217" />
         <entry key="..\:/Android/Coffe/app/src/main/res/drawable/ic_add_light.xml" value="0.217" />
         <entry key="..\:/Android/Coffe/app/src/main/res/drawable/ic_launcher_background.xml" value="0.217" />
+        <entry key="..\:/Android/Coffe/app/src/main/res/drawable/ic_map_marker.xml" value="0.1555" />
         <entry key="..\:/Android/Coffe/app/src/main/res/drawable/ic_password.xml" value="0.2595" />
         <entry key="..\:/Android/Coffe/app/src/main/res/drawable/ic_remove.xml" value="0.217" />
         <entry key="..\:/Android/Coffe/app/src/main/res/drawable/ic_remove_light.xml" value="0.107" />
         <entry key="..\:/Android/Coffe/app/src/main/res/layout/activity_base.xml" value="0.25052083333333336" />
+        <entry key="..\:/Android/Coffe/app/src/main/res/layout/activity_empt.xml" value="0.12183383991894631" />
         <entry key="..\:/Android/Coffe/app/src/main/res/layout/activity_login.xml" value="0.25052083333333336" />
         <entry key="..\:/Android/Coffe/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Android/Coffe/app/src/main/res/layout/fragment_blank.xml" value="0.25052083333333336" />
         <entry key="..\:/Android/Coffe/app/src/main/res/layout/fragment_cart.xml" value="0.2" />
         <entry key="..\:/Android/Coffe/app/src/main/res/layout/fragment_location.xml" value="0.264" />
         <entry key="..\:/Android/Coffe/app/src/main/res/layout/fragment_login.xml" value="0.11313868613138686" />
+        <entry key="..\:/Android/Coffe/app/src/main/res/layout/fragment_map.xml" value="0.25052083333333336" />
         <entry key="..\:/Android/Coffe/app/src/main/res/layout/fragment_menu.xml" value="0.264" />
         <entry key="..\:/Android/Coffe/app/src/main/res/layout/fragment_registration.xml" value="0.1" />
         <entry key="..\:/Android/Coffe/app/src/main/res/layout/item_cart.xml" value="0.1" />

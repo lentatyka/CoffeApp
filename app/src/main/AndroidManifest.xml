@@ -16,6 +16,9 @@
         android:theme="@style/Theme.Coffe"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ui.MapActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.BaseActivity"
             android:exported="true"
             android:launchMode="standard"
@@ -29,12 +32,11 @@
         <activity
             android:name=".ui.LoginActivity"
             android:exported="false"
-            android:screenOrientation="sensor"/>
+            android:screenOrientation="sensor" />
         <activity
             android:name=".ui.MainActivity"
             android:exported="false"
-            android:screenOrientation="sensor">
-        </activity>
+            android:screenOrientation="sensor"></activity>
     </application>
 
 </manifest>

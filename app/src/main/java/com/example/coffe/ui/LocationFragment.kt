@@ -2,7 +2,6 @@ package com.example.coffe.ui
 
 import android.content.Intent
 import android.location.Location
-import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -97,10 +96,9 @@ class LocationFragment : Fragment(), LocationService.Callback {
             }
 
             btnShowMap.setOnClickListener {
-                val uri: Uri =
-                    Uri.parse("yandexmaps://maps.yandex.ru/?ll=37.619902,55.753716&z=11&l=map")
-                val intent = Intent(Intent.ACTION_VIEW, uri)
-                startActivity(intent)
+                Intent(requireContext(), MapActivity::class.java).also {
+                    startActivity(it)
+                }
             }
         }
     }

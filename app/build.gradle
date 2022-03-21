@@ -77,4 +77,7 @@ dependencies {
     //Location
     implementation 'com.google.android.gms:play-services-location:19.0.1'
 
+    //Yandex map
+    implementation 'com.yandex.android:mapkit:3.5.0'
+
 }
