@@ -3,7 +3,7 @@ package com.example.coffe.adapters.items
 data class CartItem(
     override val id: Double,
     override val name: String,
-    val price: Double,
+    val price: Int,
     private val _amount: Int
     ) :Result {
     var amount:Int = _amount

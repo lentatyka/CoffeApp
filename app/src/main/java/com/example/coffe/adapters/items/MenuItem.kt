@@ -4,7 +4,7 @@ data class MenuItem(
     override val id: Double,
     override val name: String,
     val imageURL: String,
-    val price: Double,
+    val price: Int,
 ): Result {
     var amount:Int = 0
     set(value) {

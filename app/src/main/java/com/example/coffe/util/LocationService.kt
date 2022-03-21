@@ -5,9 +5,8 @@ import android.content.Context
 import android.content.pm.PackageManager
 import android.location.Location
 import android.os.Looper
-import android.util.Log
 import androidx.core.app.ActivityCompat
-import com.example.coffe.MainActivity
+import com.example.coffe.ui.MainActivity
 import com.google.android.gms.location.*
 import dagger.hilt.android.qualifiers.ActivityContext
 import dagger.hilt.android.scopes.FragmentScoped
@@ -42,9 +41,13 @@ class LocationService @Inject constructor(
     }
     fun startUpdate() {
         checkPermission()
-        locationManager.requestLocationUpdates(
-            locationRequest, this, Looper.getMainLooper()
-        )
+        locationManager.lastLocation.addOnSuccessListener {
+            callback.invoke(it)
+        }.addOnFailureListener {
+            locationManager.requestLocationUpdates(
+                locationRequest, this, Looper.getMainLooper()
+            )
+        }
     }
 
     //

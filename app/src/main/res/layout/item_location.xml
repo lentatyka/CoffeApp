@@ -5,7 +5,7 @@
 
     <data>
         <variable
-            name="location"
+            name="loc"
             type="com.example.coffe.adapters.items.LocationItem" />
     </data>
 
@@ -26,7 +26,7 @@
                 android:id="@+id/txt_shop_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{location.name}"
+                android:text="@{loc.name}"
                 android:textSize="24sp"
                 android:textColor="@color/coffe_500"
                 android:textStyle="bold"
@@ -36,7 +36,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/coffe_200"
-                android:text="@{@string/distance(location.distance)}"
+                android:text="@{loc.distance >= 1000 ? @plurals/distance_var(0, (loc.distance/1000)) : @plurals/distance_var(1, loc.distance)}"
                 tools:text="2 km from you" />
         </LinearLayout>
 

@@ -4,7 +4,6 @@ import com.example.coffe.model.responces.AuthBody
 import com.example.coffe.model.responces.AuthResponse
 import com.example.coffe.model.responces.MenuResponse
 import com.example.coffe.model.responces.LocationResponse
-import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.*
 

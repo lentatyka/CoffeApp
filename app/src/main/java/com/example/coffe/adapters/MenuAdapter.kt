@@ -23,16 +23,18 @@ class MenuAdapter(
         private val callback: (Double, Int)->Unit
     ):RecyclerView.ViewHolder(binding.root){
 
-        fun bind(index: Int, item: MenuItem){
+        fun bind(item: MenuItem){
             binding as ItemMenuBinding
             binding.setVariable(BR.menu, item)
             binding.executePendingBindings()
+
             Glide.with(itemView)
                 .load(item.imageURL)
                 .placeholder(R.drawable.ic_launcher_foreground)
                 .error(R.drawable.ic_error)
                 .centerCrop()
                 .into(binding.imgProduct)
+
             binding.btnAdd.setOnClickListener {
                 binding.txtAmount.also {
                     var amount = Integer.valueOf(it.text.toString())    //NumberFormatExc?
@@ -62,6 +64,6 @@ class MenuAdapter(
     }
 
     override fun onBindViewHolder(holder: MenuViewHolder, position: Int) {
-        holder.bind(position, getItem(position) as MenuItem)
+        holder.bind(getItem(position) as MenuItem)
     }
 }

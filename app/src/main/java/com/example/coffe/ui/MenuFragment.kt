@@ -1,7 +1,6 @@
 package com.example.coffe.ui
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -11,11 +10,13 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
-import com.example.coffe.CoffeViewModel
+import com.example.coffe.R
+import com.example.coffe.viewmodels.MainViewModel
 import com.example.coffe.adapters.MenuAdapter
 import com.example.coffe.databinding.FragmentMenuBinding
 import com.example.coffe.util.State
 import com.example.coffe.util.launchWhenStarted
+import com.example.coffe.util.showToast
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.onEach
 
@@ -23,9 +24,9 @@ import kotlinx.coroutines.flow.onEach
 class MenuFragment : Fragment() {
     private var _binding: FragmentMenuBinding? = null
     private val binding get() = _binding!!
-    private val viewModel: CoffeViewModel by activityViewModels()
+    private val viewModel: MainViewModel by activityViewModels()
     private val navigationArgs: MenuFragmentArgs by navArgs()
-
+    private lateinit var menuAdapter: MenuAdapter
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -36,33 +37,42 @@ class MenuFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val menuAdapter = MenuAdapter{id, amount ->
+
+        setAdapter()
+        setViewModel()
+    }
+
+    private fun setViewModel() {
+        viewModel.getMenu(navigationArgs.id)
+        viewModel.state.onEach {
+            if (it is State.Success) {
+                menuAdapter.submitList(it.result)
+            }
+        }.launchWhenStarted(lifecycleScope)
+    }
+
+    private fun setAdapter() {
+        menuAdapter = MenuAdapter { id, amount ->
             viewModel.setMenuAmount(id, amount)
         }
-        binding.apply {
+        with(binding) {
             menuRecycler.layoutManager = GridLayoutManager(
                 requireContext(),
                 2
             )
             menuRecycler.adapter = menuAdapter
             btnShowCart.setOnClickListener {
-                MenuFragmentDirections.actionMenuFragmentToCartFragment().also{
-                    findNavController().navigate(it)
-                }
+                if (viewModel.cartNotEmpty())
+                    MenuFragmentDirections.actionMenuFragmentToCartFragment().also {
+                        findNavController().navigate(it)
+                    } else
+                    getString(R.string.order_failed).showToast(requireContext())
             }
         }
-        viewModel.getMenu(navigationArgs.id)
-        viewModel.state.onEach {
-            if(it is State.Success){
-                menuAdapter.submitList(it.result)
-            }
-        }.launchWhenStarted(lifecycleScope)
-
-
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onDestroyView() {
+        super.onDestroyView()
         _binding = null
     }
 }

@@ -21,8 +21,9 @@ class LocationAdapter(
     class LocationViewHolder(
         private val  binding: ViewDataBinding
     ):RecyclerView.ViewHolder(binding.root){
+
         fun bind(item: Result){
-            binding.setVariable(BR.location, item)
+            binding.setVariable(BR.loc, item)
             binding.executePendingBindings()
         }
     }
@@ -43,6 +44,7 @@ class LocationAdapter(
             callback(item.id.toLong())
         }
     }
+
     companion object {
         val DiffCallback = object : DiffUtil.ItemCallback<Result>(){
             override fun areItemsTheSame(oldItem: Result, newItem: Result): Boolean {
@@ -53,7 +55,6 @@ class LocationAdapter(
             override fun areContentsTheSame(oldItem: Result, newItem: Result): Boolean {
                 return oldItem == newItem
             }
-
         }
     }
 }

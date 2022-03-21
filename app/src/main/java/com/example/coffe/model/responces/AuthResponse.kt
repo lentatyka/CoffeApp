@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName
 
 data class AuthResponse(
     @SerializedName("token")
-    val token: String,
-    @SerializedName("tokenLifeTime")
-    val tokenLifeTime: Long
+    val token: String?,
+    @SerializedName("tokenLifetime")
+    val tokenLifeTime: Int
 )

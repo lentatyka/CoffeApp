@@ -15,18 +15,19 @@ import com.example.coffe.adapters.items.Result
 import com.example.coffe.databinding.ItemCartBinding
 
 class CartAdapter(
-    private val callback: (Double, Int)->Unit
-):ListAdapter<Result, CartAdapter.MenuViewHolder>(DiffCallback) {
+    private val callback: (Double, Int) -> Unit
+) : ListAdapter<Result, CartAdapter.MenuViewHolder>(DiffCallback) {
 
     class MenuViewHolder(
-        private val  binding: ViewDataBinding,
-        private val callback: (Double, Int)->Unit
-    ):RecyclerView.ViewHolder(binding.root){
+        private val binding: ViewDataBinding,
+        private val callback: (Double, Int) -> Unit
+    ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(index: Int, item: CartItem){
+        fun bind(item: CartItem) {
             binding as ItemCartBinding
             binding.setVariable(BR.cart, item)
             binding.executePendingBindings()
+
             binding.btnAdd.setOnClickListener {
                 binding.txtAmount.also {
                     var amount = Integer.valueOf(it.text.toString())    //NumberFormatExc?
@@ -37,7 +38,7 @@ class CartAdapter(
             binding.btnRemove.setOnClickListener {
                 binding.txtAmount.also {
                     var amount = Integer.valueOf(it.text.toString())    //NumberFormatExc?
-                    if(--amount >= 0){
+                    if (--amount >= 0) {
                         it.text = amount.toString()
                         callback(item.id, amount)
                     }
@@ -45,6 +46,7 @@ class CartAdapter(
             }
         }
     }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MenuViewHolder {
         val binding = DataBindingUtil.inflate<ItemCartBinding>(
             LayoutInflater.from(parent.context),
@@ -56,6 +58,6 @@ class CartAdapter(
     }
 
     override fun onBindViewHolder(holder: MenuViewHolder, position: Int) {
-        holder.bind(position, getItem(position) as CartItem)
+        holder.bind(getItem(position) as CartItem)
     }
 }
