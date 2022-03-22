@@ -145,4 +145,6 @@ class MainViewModel @Inject constructor(
         return listMenu.find { it.amount > 0 } != null
     }
 
+    fun getLocationCollection() = listLocation
+
 }

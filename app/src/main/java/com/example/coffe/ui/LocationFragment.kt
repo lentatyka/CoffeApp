@@ -1,6 +1,5 @@
 package com.example.coffe.ui
 
-import android.content.Intent
 import android.location.Location
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -100,8 +99,8 @@ class LocationFragment : Fragment(), LocationService.Callback {
             }
 
             btnShowMap.setOnClickListener {
-                Intent(requireContext(), MapActivity::class.java).also {
-                    startActivity(it)
+                LocationFragmentDirections.actionLocationFragmentToMapfFragment().also {
+                    findNavController().navigate(it)
                 }
             }
         }

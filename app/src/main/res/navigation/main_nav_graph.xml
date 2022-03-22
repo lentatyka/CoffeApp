@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_locationFragment_to_menuFragment"
             app:destination="@id/menuFragment" />
+        <action
+            android:id="@+id/action_locationFragment_to_mapfFragment"
+            app:destination="@id/kartaTest" />
     </fragment>
     <fragment
         android:id="@+id/menuFragment"
@@ -37,4 +40,9 @@
             app:popUpTo="@id/locationFragment"
             app:popUpToInclusive="true" />
     </fragment>
+    <fragment
+        android:id="@+id/kartaTest"
+        android:name="com.example.coffe.ui.MapFragment"
+        android:label="fragment_karta_test"
+        tools:layout="@layout/fragment_map" />
 </navigation>

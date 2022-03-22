@@ -31,7 +31,7 @@ class LoginFragment : Fragment() {
     ): View {
         _binding = FragmentLoginBinding.inflate(layoutInflater, container, false)
         (activity as LoginActivity).apply {
-            findViewById<TextView>(R.id.toolbar_title)?.text = getString(R.string.f_location)
+            findViewById<TextView>(R.id.toolbar_title)?.text = getString(R.string.f_login)
         }
         return binding.root
     }

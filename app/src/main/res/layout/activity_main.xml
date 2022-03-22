@@ -7,7 +7,7 @@
     tools:context=".ui.MainActivity">
 
     <include layout="@layout/app_bar"
-        android:id="@+id/toolbar_m"/>
+        android:id="@+id/toolbar"/>
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/main_nav_host_fragment"

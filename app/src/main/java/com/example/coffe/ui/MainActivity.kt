@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         //Set toolbar
-        val toolbar = findViewById<Toolbar>(R.id.toolbar_m)
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
         findViewById<ImageButton>(R.id.btn_back)?.let{
             it.setOnClickListener {
                 onBackPressed()

@@ -14,9 +14,6 @@
         android:theme="@style/Theme.Coffe"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".ui.MapActivity"
-            android:exported="false"/>
-        <activity
             android:name=".ui.BaseActivity"
             android:exported="true"
             android:launchMode="standard"
