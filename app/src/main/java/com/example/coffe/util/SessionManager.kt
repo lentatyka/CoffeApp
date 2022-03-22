@@ -4,8 +4,6 @@ import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
 import com.example.coffe.R
-import com.example.coffe.model.responces.AuthResponse
-import dagger.hilt.android.qualifiers.ActivityContext
 import javax.inject.Inject
 
 class SessionManager @Inject constructor(

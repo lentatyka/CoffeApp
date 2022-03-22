@@ -10,7 +10,6 @@ import com.example.coffe.BR
 import com.example.coffe.R
 import com.example.coffe.adapters.LocationAdapter.Companion.DiffCallback
 import com.example.coffe.adapters.items.CartItem
-import com.example.coffe.adapters.items.MenuItem
 import com.example.coffe.adapters.items.Result
 import com.example.coffe.databinding.ItemCartBinding
 

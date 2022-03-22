@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
@@ -40,6 +41,9 @@ class LocationFragment : Fragment(), LocationService.Callback {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentLocationBinding.inflate(layoutInflater, container, false)
+        (activity as MainActivity).apply {
+            findViewById<TextView>(R.id.toolbar_title)?.text = getString(R.string.f_location)
+        }
         return binding.root
     }
 

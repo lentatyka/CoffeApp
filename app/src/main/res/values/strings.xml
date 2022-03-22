@@ -26,5 +26,9 @@
         <item quantity="one">%d м от вас</item>
         <item quantity="other">%d км от вас</item>
     </plurals>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="f_login">Войти</string>
+    <string name="f_registration">Регистрация</string>
+    <string name="f_location">Ближайшие кофейни</string>
+    <string name="f_cart">Ваш заказ</string>
+    <string name="f_menu">Меню</string>
 </resources>

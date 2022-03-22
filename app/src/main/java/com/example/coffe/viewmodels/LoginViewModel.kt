@@ -1,17 +1,13 @@
 package com.example.coffe.viewmodels
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.viewModelScope
 import com.example.coffe.model.responces.AuthBody
 import com.example.coffe.repository.CoffeRepository
-import com.example.coffe.util.State
 import com.example.coffe.util.SessionManager
+import com.example.coffe.util.State
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.launch
-import retrofit2.awaitResponse
 import javax.inject.Inject
 
 @HiltViewModel

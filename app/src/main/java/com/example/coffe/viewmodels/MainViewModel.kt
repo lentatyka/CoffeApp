@@ -2,19 +2,18 @@ package com.example.coffe.viewmodels
 
 import android.app.Application
 import android.location.Location
-import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.coffe.adapters.items.CartItem
 import com.example.coffe.adapters.items.LocationItem
 import com.example.coffe.adapters.items.MenuItem
 import com.example.coffe.adapters.items.Result
-import com.example.coffe.model.responces.*
+import com.example.coffe.model.responces.LocationResponse
+import com.example.coffe.model.responces.MenuResponse
 import com.example.coffe.repository.CoffeRepository
 import com.example.coffe.util.SessionManager
 import com.example.coffe.util.State
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
