@@ -6,21 +6,20 @@ import android.content.SharedPreferences
 import com.example.coffe.R
 import javax.inject.Inject
 
-class SessionManager @Inject constructor(
-    app: Application
-) {
+class SessionManager(app: Application) {
     private val preferences: SharedPreferences = app.applicationContext.getSharedPreferences(
         app.applicationContext.getString(R.string.preferences),
         Context.MODE_PRIVATE
     )
-    companion object{
+
+    companion object {
         private const val TOKEN = "token"
         private const val TOKENLIFETIME = "tokenlifetime"
     }
 
-    fun saveToken(token: String, lifeTime: Int){
+    fun saveToken(token: String, lifeTime: Int) {
         // lifetime = 1 hour
-        val expirationTime = System.currentTimeMillis()+lifeTime
+        val expirationTime = System.currentTimeMillis() + lifeTime
         preferences.edit()
             .putString(TOKEN, token)
             .putLong(TOKENLIFETIME, expirationTime)
@@ -29,7 +28,7 @@ class SessionManager @Inject constructor(
 
     fun getToken(): User {
         return User(
-            preferences.getString(TOKEN, null),
+            preferences.getString(TOKEN, ""),
             preferences.getLong(TOKENLIFETIME, 0)
         )
     }

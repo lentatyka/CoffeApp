@@ -16,13 +16,10 @@ interface CoffeService {
     suspend fun signIn(@Body auth: AuthBody):Response<AuthResponse>
 
     @GET("/locations")
-    suspend fun getLocations(@Header("Authorization") token :String): Response<ArrayList<LocationResponse>>
+    suspend fun getLocations(): Response<ArrayList<LocationResponse>>
 
     @GET("/location/{id}/menu")
-    suspend fun getMenu(
-        @Path("id") id: Long,
-        @Header("Authorization") token :String
-    ): Response<ArrayList<MenuResponse>>
+    suspend fun getMenu(@Path("id") id: Long): Response<ArrayList<MenuResponse>>
 
 
 }

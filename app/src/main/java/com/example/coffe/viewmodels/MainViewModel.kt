@@ -2,6 +2,7 @@ package com.example.coffe.viewmodels
 
 import android.app.Application
 import android.location.Location
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.coffe.adapters.items.CartItem
@@ -23,19 +24,21 @@ import javax.inject.Inject
 @HiltViewModel
 class MainViewModel @Inject constructor(
     private val repository: CoffeRepository,
-    private val userManager: SessionManager,
     app: Application
 ) : AndroidViewModel(app) {
-    private val _state = MutableStateFlow<State<List<Result>>>(State.Loading)
-    val state: StateFlow<State<List<Result>>> = _state.asStateFlow()
+    private val _state: MutableStateFlow<State<List<Result>>>
+    val state: StateFlow<State<List<Result>>> get() = _state.asStateFlow()
     private val listMenu = mutableListOf<MenuItem>()
     private val listCart = mutableListOf<CartItem>()
     private val listLocation = mutableListOf<LocationItem>()
 
+    init {
+        _state = MutableStateFlow(State.Success(listLocation))
+    }
     fun updateLocation(location: Location) {
         viewModelScope.launch {
             _state.value = State.Loading
-            repository.getLocations(userManager.getToken().token!!).also { result ->
+            repository.getLocations().also { result ->
                 if (result.isSuccessful && result.code() == 200) {
                     listLocation.clear()
                     result.body()!!.forEach {
@@ -49,10 +52,6 @@ class MainViewModel @Inject constructor(
         }
     }
 
-    fun setLocation() {
-        listMenu.clear()    //Clear stack
-        _state.value = State.Success(listLocation)
-    }
 
     /*
     Стоит ли всякий раз делать запрос возвращаясь из корзины или только обновлять количество?
@@ -64,7 +63,7 @@ class MainViewModel @Inject constructor(
             _state.value = State.Loading
             listMenu.clear()
             viewModelScope.launch {
-                repository.getMenu(id, userManager.getToken().token!!).also { result ->
+                repository.getMenu(id).also { result ->
                     if (result.isSuccessful && result.code() == 200) {
                         result.body()!!.forEach {
                             listMenu += getMenuItemEntry(it)

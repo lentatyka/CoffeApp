@@ -52,19 +52,17 @@ class MapFragment : Fragment(){
 
     private fun setMap() {
         mapView = binding.mapview
+        val objects = viewModel.getLocationCollection()
+        mapView.map.move(
+            CameraPosition(Point(objects.first().latitude, objects.first().longitude), 16.0f, 0.0f, 0.0f),
+            Animation(Animation.Type.SMOOTH, 0f),
+            null)
         mapObjects = mapView.map.mapObjects
-        viewModel.getLocationCollection().forEach {locationItem ->
+        objects.forEach {locationItem ->
             mapObjects.addPlacemark(
                 Point(locationItem.latitude, locationItem.longitude),
                 createMarker(locationItem.name)
             )
-            //Спозиционировал на первой точке, а не относительно координат пользователя.
-            val temp= viewModel.getLocationCollection().first()
-            mapView.map.move(
-                CameraPosition(Point(temp.latitude, temp.longitude), 15.0f, 0.0f, 0.0f),
-                Animation(Animation.Type.SMOOTH, 0f),
-                null)
-            //--------------
         }
     }
 

@@ -24,6 +24,8 @@
                 android:id="@+id/txt_product"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textStyle="bold"
                 android:textColor="@color/coffe_700"
                 android:text="@{cart.name}"
                 tools:text="Name" />
@@ -45,6 +47,7 @@
                 android:layout_alignTop="@+id/txt_price"
                 android:layout_alignBottom="@id/txt_price"
                 android:layout_marginEnd="8dp"
+                android:textStyle="bold"
                 android:layout_toLeftOf="@id/btn_add"
                 android:textColor="@color/coffe_700"
                 android:text="@{Integer.toString(cart.amount)}"
