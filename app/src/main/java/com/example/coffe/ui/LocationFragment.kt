@@ -64,6 +64,7 @@ class LocationFragment : Fragment(), LocationService.Callback {
     }
 
     private fun setViewModel() {
+        viewModel.setLocation()
         viewModel.state.onEach { state ->
             when (state) {
                 is State.Loading -> {

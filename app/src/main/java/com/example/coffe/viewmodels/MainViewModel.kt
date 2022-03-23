@@ -52,6 +52,11 @@ class MainViewModel @Inject constructor(
         }
     }
 
+    fun setLocation() {
+        listMenu.clear()    //Clear stack
+        _state.value = State.Success(listLocation)
+    }
+
 
     /*
     Стоит ли всякий раз делать запрос возвращаясь из корзины или только обновлять количество?
